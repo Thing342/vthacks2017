@@ -1,3 +1,20 @@
+"""
+2017 VTHacks Submission - LetsGoEatAlready by Wes Jordan
+
+This is a small webapp that I created to address my family's general inability to come to a consensus when it comes to 
+    finding a place to eat. The way it works is that it searches restaurants near you based on the parameters you give it
+    using the Google Places API and then returns exactly four places from you to choose. If you don't like one of the
+    options displayed, you can simply click it away and another one will come back and take its place. 
+    
+    The goal of this application is to combat you or your group's dawdling indecisiveness by reducing your number of 
+    options and make it easy to come to a decision when the only thing you can agree on is that you're all starving. It 
+    also encourages visiting new places by selecting some that may be lesser known.
+    
+    The application works off of a Flask backend that serves and renders most of the page's UI using Jinja2 templates. 
+    New places are added via AJAX requests using session verification, using info from Google's places API. Results from
+    from the API are cached in Firebase in order to limit API calls.
+"""
+
 import os
 from math import floor
 from random import random
@@ -94,7 +111,7 @@ def place_photo(picture_ref):
     folder = APP_STATIC + '/place_photos/'
     filename = folder + picture_ref + '.jpg'
     if not os.path.isfile(filename):
-        url = f'https://maps.googleapis.com/maps/api/place/photo?maxwidth=512&photoreference={picture_ref}&key={gmaps_key}'
+        url = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=512&photoreference=%s&key=%s' % (picture_ref, gmaps_key)
         urllib.request.urlretrieve(url, filename)
 
     return send_from_directory(folder, picture_ref + '.jpg')

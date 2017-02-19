@@ -1,15 +1,16 @@
 import requests
 from flask import json
 
-auth = 'Sj3cx2qhDo3HndBJnM1otXaRdniq8Alwt7JQRRG5'
+from server import firebase_auth as auth
+
 db_url = 'https://vthacks2017.firebaseio.com'
 
 
 def get(path):
-    resp = requests.get(f'{db_url}/{path}.json?print=pretty&auth={auth}')
+    resp = requests.get('%s/%s.json?&auth=%s' % (db_url, path, auth))
     return resp.json()
 
 
 def push(path, data):
-    return requests.put(f'{db_url}/{path}.json?print=pretty&auth={auth}', data=json.dumps(data))
+    return requests.put('%s/%s.json?auth={%s}' % (db_url, path, auth), data=json.dumps(data))
 

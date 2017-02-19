@@ -50,21 +50,23 @@
                 <a href="https://www.google.com/maps/?q='{{ place['name'] }} {{ place['vicinity'] }}'" target="_blank"
                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                     <i class="material-icons">map</i>
-                    View in Google Maps
+                    Google Maps
                 </a>
                 <a href="place_website/{{ place['place_id'] }}" target="_blank"
                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                     <i class="material-icons">language</i>
                     Website
                 </a>
-            </div>
-            <div class="mdl-card__menu">
-                <button
-                        class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-                    onclick="draw_new('{{ place['place_id'] }}');"
+                <button id="clear-button-{{ place['place_id'] }}"
+                        class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                        onclick="draw_new('{{ place['place_id'] }}');"
                 >
                     <i class="material-icons">clear</i>
+                    Pick New
                 </button>
+                <div class="mdl-tooltip" for="clear-button-{{ place['place_id'] }}">
+                    Click to remove this place<br>and add a new one to the list.
+                </div>
             </div>
         </div>
     </li>

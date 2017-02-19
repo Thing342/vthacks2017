@@ -1,0 +1,20 @@
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 178-139-514
+127.0.0.1 - - [19/Feb/2017 09:18:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:18:50] "GET /static/master.css HTTP/1.1" 200 -
+Using Gmaps!
+127.0.0.1 - - [19/Feb/2017 09:19:02] "GET /search?address=Blacksburg&radius=10&prefer=prominence&maxprice=4 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:02] "GET /static/master.css HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:03] "GET /ajax/get_results?num=4 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:03] "GET /place-photo/CoQBdwAAACKs8LJTZD1kT_MH-9xHn5MG0iEnRpvfclx4ivOzLcAMwBDX9wTBI0u9TMO5SM7a4Gr8xSYxAiVZfeVDw83TaJ6zECPG_13pQBfngR3hZUo2JLEm5quaQRxne9etQRQRsT9q4dbNEHeoc9JZCjyfJaLqhz6yc6hCM3ku54R_Fi_oEhBDVCG-KT5dbbhacpW_cLozGhQwC2cFfvjQMPFicYZO0DALbHlqCw HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:03] "GET /place-photo/CoQBdwAAAAz2LGy4kDdCAJ3iVJ5gvV0UXtl5oPKZrLVsaQCa2SB93yuBLFHuOH-5eD4o2ROvheNAsoC8-VS5EhR1Ndmiwy722hUYH_w6uLqkIw_tVxxYnPQ-C5-7rKaemwfuu6M_ICQ_4XVlVmxi-gXJ7kG3eZAjwGtGYJiIAgI7J-tI6g0iEhDx3Ao0a8QEOpMZBamDlQlUGhSwJzTVos8f4DdU_cYjeUMHZA2Ukg HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:04] "GET /place-photo/CoQBdwAAAJz-di0C_oE-h3d80ep4fXHE73PLWSJexTZxN__h0T8_47njm9wHgmf72wp2EGx2Pa-L5-CrSLOjBgOrVs_u4RaudabatPzpRKLF8Kb_pH1vL5k0el9s8ufb7mYWcNOQ6tc-hgxt17kXFIwiUPeKDjjJjzWJB_EiC_xJ20uSwD0yEhBjrPrUOA_plE4RT96b5G2AGhT3qMh05QAcPhQgsFhbMEfd4ZCMgg HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:04] "GET /place-photo/CoQBdwAAAKh95tLDJmblQl9V1k8m2kCPallkkWtRQordn9BGBtitTqOhHKIhAbwReJ8uXkdKGWSGA18a0GrH_AcK4JIQh_zfncwUa0L8SQ7AiiWw0BLR1KDd0eg2TY43WmFTEmtfLO6LWAiP1YF6BHh9qGkw0A31KQ-IbUIHL-ET2-m7oC8fEhC2jYipD75Kl-JxJXQihaz8GhSF2j-x9Etyi9h7urOaoov5w7v4uA HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:06] "GET /ajax/get_results?num=1 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:06] "GET /place-photo/CoQBdwAAABGSGxELIkuGBcQKR7CoSE5jM3kYA2Gtr8bj3TvJJMGU507IqryYshFO0MkqtzMLYC-0PqgYNPnARxJzsu3a98mTQVJdh5KCje__ElVCpO5xehpjq9EbvLa-rPXtr-77ZjaK_bPGJD7VW-7VQ_Rsu0lWw9kKAXUP93PFXw4xp3xeEhDTVDMTRgP1nTo0v2hb18rpGhQs_puZhcSvGB5JffdVvlJdabn7Cg HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:08] "GET /ajax/get_results?num=1 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:09] "GET /place-photo/CoQBdwAAALgfkaQ13Rod1dLXLqiKzTg2LCe0aAH3z43mRIicHwIivVPNDsDnyKunvHHAkrJSAeYXkgVxIuo9ycaeQwvTAfoigwPN0vhD12T-H1SniPVabv0yYN1AOcj7pWF5PT0xhpMweXJEob1Vdynpb1uY8I5giLCfcj9_aiFSRy2wInA8EhBfUMLaLX5aAyUgHTxbcLBrGhTMZ1q-lFWyZEfa4ylCjcj8SdCpkw HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:17] "GET /ajax/get_results?num=1 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Feb/2017 09:19:18] "GET /place-photo/CoQBdwAAAOS_OTxEIFv8qe96GYQS7iKpgq_kuXN4ugkg0Ol2ZXrGP3IkWpaK0mfMJX8UpKnr2T7ZoYSwDYeWlp3wFT43ZLHnXR4wt-Bp1LDRMN3q3bgFk5t-Bg7XceZkKAicsejxLir4tOfsNRMzXt0ElrSqhlM7hFSFySSnHR_D55h8Sre2EhB_2G4mh_PSZItpbWo4J8ajGhR_Pd9rLop6GrZ_BJG3wwKkMACgnA HTTP/1.1" 200 -
