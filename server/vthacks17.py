@@ -57,9 +57,13 @@ def get_results():
         if len(queue) <= 5:
             if not get_more_results(): abort(410)
 
-        index = low_random(0, len(queue))
-        resp.append(queue[index])
-        del queue[index]
+        try:
+            index = low_random(0, len(queue))
+            resp.append(queue[index])
+            del queue[index]
+        except IndexError:
+            print("index %d, len %d" % (index, len(queue)))
+            abort(500)
 
     return render_template("place.html", places=resp)
 
@@ -71,12 +75,13 @@ def get_more_results():
         return False
 
     more_places = gmaps.places_nearby(location=None,
-        page_token=session['next_token']
-    )
+                                      page_token=session['next_token']
+                                      )
 
     queues[session['sess_id']].append(more_places['results'])
     session['next_token'] = more_places['next_page_token'] if 'next_page_token' in more_places else None
     return True
+
 
 def low_random(min, max):
     return floor(abs(random() - random()) * (1 + max - min) + min)
@@ -93,6 +98,23 @@ def place_photo(picture_ref):
         urllib.request.urlretrieve(url, filename)
 
     return send_from_directory(folder, picture_ref + '.jpg')
+
+
+@app.route('/place_website/<place_id>')
+def place_website(place_id):
+    cached_result = firebase.get('cache/gmaps/details/' + str(place_id))
+    if cached_result is not None:
+        place_details = cached_result
+    else:
+        place_details = gmaps.place(place_id=place_id)
+        firebase.push('cache/gmaps/details/' + str(place_id), place_details)
+
+    place_details = place_details['result']
+
+    if 'website' in place_details and len(place_details['website']) > 0:
+        return redirect(place_details['website'])
+    else:
+        return redirect(place_details['url'])
 
 
 def init_session(sess_id):

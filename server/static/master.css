@@ -24,6 +24,7 @@ footer {
     width: 80%;
     margin: 10px;
     margin: auto;
+    overflow: hidden;
     background-color: #ffffff;
     -webkit-box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.15);

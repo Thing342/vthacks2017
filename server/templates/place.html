@@ -1,5 +1,5 @@
 {% macro render(place) %}
-    <li id="{{ place['id'] }}" class="mdl-list__item">
+    <li id="{{ place['place_id'] }}" class="mdl-list__item">
         <div class="demo-card-wide mdl-card mdl-shadow--2dp">
             {% if 'photos' in place %}
                 <div class="mdl-card__title"
@@ -47,16 +47,21 @@
                 </ul>
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <a href="https://www.google.com/maps/place/'{{ place['name'] }}'"
+                <a href="https://www.google.com/maps/?q='{{ place['name'] }} {{ place['vicinity'] }}'" target="_blank"
                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                     <i class="material-icons">map</i>
                     View in Google Maps
+                </a>
+                <a href="place_website/{{ place['place_id'] }}" target="_blank"
+                   class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">language</i>
+                    Website
                 </a>
             </div>
             <div class="mdl-card__menu">
                 <button
                         class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-                    onclick="draw_new('{{ place['id'] }}');"
+                    onclick="draw_new('{{ place['place_id'] }}');"
                 >
                     <i class="material-icons">clear</i>
                 </button>
