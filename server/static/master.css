@@ -1,0 +1,50 @@
+body {
+    background-color: #673AB7;
+}
+
+.flashes > * {
+    color: red;
+}
+
+@media screen and (min-width: 1700px) {
+    #places-list {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
+}
+
+footer {
+    -webkit-box-shadow: 0px -5px 5px 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px -5px 5px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px -5px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.page-content {
+    width: 80%;
+    margin: 10px;
+    margin: auto;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.demo-card-wide.mdl-card {
+    width: 90%;
+    margin: auto;
+}
+
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 160px;
+}
+
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
+
+.demo-list-item {
+    width: 300px;
+    margin: 0;
+}

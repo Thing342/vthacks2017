@@ -1,0 +1,70 @@
+{% macro render(place) %}
+    <li id="{{ place['id'] }}" class="mdl-list__item">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            {% if 'photos' in place %}
+                <div class="mdl-card__title"
+                     style="background: url('/place-photo/{{ place['photos'][0]['photo_reference'] }}') center / cover;">
+                    <h2 class="mdl-card__title-text">{{ place['name'] }}</h2>
+                </div>
+            {% else %}
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">{{ place['name'] }}</h2>
+                </div>
+            {% endif %}
+            <div class="mdl-card__supporting-text">
+                <ul class="place-list demo-list-icon mdl-list">
+                    <li>
+                                <span class="mdl-list__item-primary-content"
+                                      style="overflow: hidden; white-space: nowrap;">
+                                    <i class="material-icons mdl-list__item-icon">place</i>
+                                     {{ place['distance'] }} mi away - {{ place['vicinity'] }}
+                                </span>
+                    </li>
+                    <li>
+                                <span class="mdl-list__item-primary-content"
+                                      style="overflow: hidden; white-space: nowrap;">
+                                    <i class="material-icons mdl-list__item-icon">grade</i>
+                                    Average Rating: {{ place['rating'] }}
+                                </span>
+                    </li>
+                    {% if 'price_level' in place %}
+                        <li>
+                                <span class="mdl-list__item-primary-content"
+                                      style="overflow: hidden; white-space: nowrap;">
+                                    <i class="material-icons mdl-list__item-icon">attach_money</i>
+                                    Price Level: {{ place['price_level'] }}
+                                </span>
+                        </li>
+                    {% else %}
+                        <li>
+                                    <span class="mdl-list__item-primary-content"
+                                          style="overflow: hidden; white-space: nowrap;">
+                                        <i class="material-icons mdl-list__item-icon">attach_money</i>
+                                        Price Level: N/A
+                                    </span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="https://www.google.com/maps/place/'{{ place['name'] }}'"
+                   class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">map</i>
+                    View in Google Maps
+                </a>
+            </div>
+            <div class="mdl-card__menu">
+                <button
+                        class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+                    onclick="draw_new('{{ place['id'] }}');"
+                >
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+        </div>
+    </li>
+{% endmacro %}
+
+{% for place in places %}
+    {{ render(place) }}
+{% endfor %}

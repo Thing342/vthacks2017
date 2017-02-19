@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+{% block title %}
+    Main
+{% endblock %}
+{% block body %}
+    <h1 style="margin: 15px; cursor: pointer;" onclick="window.location='/'">
+        LetsGoEat
+    </h1>
+    <div class="mdl-grid">
+        <div class="mdl-cell--3-col" style="float: left;">
+            <div class="mdl-card mdl-shadow--4dp" id="search-form" style="margin: 10px; padding: 10px;">
+                <div class="mdl-card__title">
+                    <h4 class="mdl-card__title-text">Search:</h4>
+                </div>
+                <hr style="margin: 0">
+                <form id="search_form" action="search" style="width: 100%">
+                    <div class="mdl-textfield mdl-js-textfield" style="float: left">
+                        <label class="mdl-textfield__label" for="loc">Location: </label>
+                        <input id="input_address" class="mdl-textfield__input" type="text" name="address" required value="">
+                    </div>
+
+                    <div style="float: left">
+                        <label for="prefer">Favor restaurants that are: </label><br>
+                        <input type="radio" name="prefer" value="prominence" checked>Popular<br>
+                        <input type="radio" name="prefer" value="distance">Close By<br>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <label class="mdl-textfield__label" for="radius">Max Distance (mi): </label>
+                        <input class="mdl-textfield__input" type="number" id="input_radius" name="radius" required
+                               pattern="-?[0-9]*(\.[0-9]+)?">
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+
+                    <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                           type="submit" style="margin: 5px">
+                </form>
+            </div>
+        </div>
+        <div class="mdl-cell--9-col" style="float: right">
+            {% block results %}
+                <p>Put some interesting help text here, perhaps describing what this app is actually supposed to do (as opposed to being a pointless rehosting of the google maps search)</p>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+{% import 'place.html' as p %}
+
+{% block results %}
+    <!--///////////// BEGIN search.html //////////////-->
+    <script type="application/javascript">
+        function get_results(number, callback) {
+            $.ajax({
+                url: '/ajax/get_results',
+                type: 'get',
+                data: {num: number},
+                success: callback,
+                dataType: 'html'
+            });
+        }
+
+        function draw_new(id) {
+            var $target = $('#' + id.toString()) ;
+            $target.hide('slow', function(){ $target.remove(); });
+            get_results(1, function (result) {
+               $("#places-list").append(result)
+            });
+        }
+
+        var search_submit = function () {
+            get_results(4, function (result) {
+                $("#places-list").html(result);
+            })
+        }
+
+        $(function () {
+            search_submit();
+            $('#input_address').val('{{ loc }}');
+            $('#input_radius').val({{ radius / 1600 }});
+            $(':radio[value="{{ prefer }}"]').attr('checked', 'checked');
+        });
+    </script>
+
+    <div class="mdl-tabs mdl-js-tabs">
+        <div class="mdl-tabs__tab-bar">
+            <a id="label-header" class="mdl-tabs__tab is-active">Results near <span id="place_name">{{ loc }}</span> within {{ radius / 1600 }} miles:</a>
+        </div>
+
+        <div class="mdl-tabs__panel is-active" id="starks-panel">
+            <ul id="places-list" class="mdl-list" style="width: 100%">
+            </ul>
+        </div>
+    </div>
+    <!--///////////// END search.html //////////////-->
+{% endblock %}
