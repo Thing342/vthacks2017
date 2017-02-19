@@ -1,3 +1,4 @@
 server/__init__.py
 server/vthacks2017-firebase-adminsdk-s8aeg-8bc523d31f.json
 server/static/place_photos
+server/logs/*
