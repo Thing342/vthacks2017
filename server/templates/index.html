@@ -3,9 +3,10 @@
     Main
 {% endblock %}
 {% block body %}
-    <h1 style="margin: 15px; cursor: pointer;" onclick="window.location='/'">
-        LetsGoEat
+    <h1 class="header-line" onclick="window.location='/'">
+        LetsGoEatAlready
     </h1>
+    <hr style="margin: 0">
     <div class="mdl-grid">
         <div class="mdl-cell--3-col" style="float: left;">
             <div class="mdl-card mdl-shadow--4dp" id="search-form" style="margin: 10px; padding: 10px;">
@@ -14,22 +15,37 @@
                 </div>
                 <hr style="margin: 0">
                 <form id="search_form" action="search" style="width: 100%">
-                    <div class="mdl-textfield mdl-js-textfield" style="float: left">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float: left">
                         <label class="mdl-textfield__label" for="loc">Location: </label>
-                        <input id="input_address" class="mdl-textfield__input" type="text" name="address" required value="">
+                        <input id="input_address" class="mdl-textfield__input" type="text" name="address" required
+                               value="">
                     </div>
-
-                    <div style="float: left">
-                        <label for="prefer">Favor restaurants that are: </label><br>
-                        <input type="radio" name="prefer" value="prominence" checked>Popular<br>
-                        <input type="radio" name="prefer" value="distance">Close By<br>
-                    </div>
-
-                    <div class="mdl-textfield mdl-js-textfield">
+                    <br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <label class="mdl-textfield__label" for="radius">Max Distance (mi): </label>
                         <input class="mdl-textfield__input" type="number" id="input_radius" name="radius" required
                                pattern="-?[0-9]*(\.[0-9]+)?">
                         <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <div style="margin: 10px">
+                        <label class="headline" for="prefer">Favor restaurants that are: </label><br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prefer-1">
+                            <input type="radio" id="prefer-1" class="mdl-radio__button" name="prefer"
+                                   value="prominence">
+                            <span class="mdl-radio__label">Popular</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="prefer-2">
+                            <input type="radio" id="prefer-2" class="mdl-radio__button" name="prefer" value="distance">
+                            <span class="mdl-radio__label">Close</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="maxprice">Max Price:</label>
+                        <p style="width:300px">
+                            <input class="mdl-slider mdl-js-slider" type="range" id="maxprice" name="maxprice" min="1" max="4" value="4"
+                                   step="1">
+                        <div id="price-slider-tip" class="mdl-tooltip" data-mdl-for="maxprice">Lowest (1) to Highest (4)</div>
+                        </p>
                     </div>
 
                     <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
@@ -39,7 +55,8 @@
         </div>
         <div class="mdl-cell--9-col" style="float: right">
             {% block results %}
-                <p>Put some interesting help text here, perhaps describing what this app is actually supposed to do (as opposed to being a pointless rehosting of the google maps search)</p>
+                <p>Put some interesting help text here, perhaps describing what this app is actually supposed to do (as
+                    opposed to being a pointless rehosting of the google maps search)</p>
             {% endblock %}
         </div>
     </div>

@@ -16,6 +16,7 @@ gmaps = googlemaps.Client(key=gmaps_key)
 
 queues = {}
 
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -31,10 +32,12 @@ def start_search():
         flash("Invalid search location.")
         return redirect(url_for('index'))
 
-    else: return render_template('search.html',
-                           loc=request.args.get('address'),
-                           radius=int(request.args.get('radius')) * 1600,
-                           prefer=request.args.get('prefer'))
+    else:
+        return render_template('search.html',
+                               loc=request.args.get('address'),
+                               radius=int(request.args.get('radius')) * 1600,
+                               prefer=request.args.get('prefer'),
+                               maxprice=int(request.args.get('maxprice')))
 
 
 @app.route('/ajax/get_results')
@@ -51,13 +54,29 @@ def get_results():
     queue = queues[session['sess_id']]
     resp = []
     for i in range(num):
-        if len(queue) <= 0: continue  # TODO Add more results when this happens
+        if len(queue) <= 5:
+            if not get_more_results(): abort(410)
+
         index = low_random(0, len(queue))
         resp.append(queue[index])
         del queue[index]
 
     return render_template("place.html", places=resp)
 
+
+def get_more_results():
+    print("Tried to get more results")
+
+    if 'next_token' not in session or session['next_token'] is None:
+        return False
+
+    more_places = gmaps.places_nearby(location=None,
+        page_token=session['next_token']
+    )
+
+    queues[session['sess_id']].append(more_places['results'])
+    session['next_token'] = more_places['next_page_token'] if 'next_page_token' in more_places else None
+    return True
 
 def low_random(min, max):
     return floor(abs(random() - random()) * (1 + max - min) + min)
@@ -95,7 +114,8 @@ def init_session(sess_id):
             location=latlon,
             radius=radius if prefer == 'prominence' else None,
             rank_by=prefer,
-            keyword='restaurant'
+            keyword='restaurant',
+            max_price=int(request.args.get('maxprice'))
         )
 
         firebase.push('cache/gmaps/' + str(request.query_string), places)

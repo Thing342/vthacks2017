@@ -48,3 +48,8 @@ footer {
     width: 300px;
     margin: 0;
 }
+
+h1.header-line {
+    margin: 10px 15px 0px;
+    cursor: pointer;
+}

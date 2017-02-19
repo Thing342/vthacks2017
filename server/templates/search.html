@@ -10,15 +10,21 @@
                 type: 'get',
                 data: {num: number},
                 success: callback,
-                dataType: 'html'
+                dataType: 'html',
+                error: function (err) {
+                    alert('Unable to load more places.');
+                    console.log(err)
+                }
             });
         }
 
         function draw_new(id) {
-            var $target = $('#' + id.toString()) ;
-            $target.hide('slow', function(){ $target.remove(); });
+            var $target = $('#' + id.toString());
+            $target.hide('slow', function () {
+                $target.remove();
+            });
             get_results(1, function (result) {
-               $("#places-list").append(result)
+                $("#places-list").append(result)
             });
         }
 
@@ -32,13 +38,14 @@
             search_submit();
             $('#input_address').val('{{ loc }}');
             $('#input_radius').val({{ radius / 1600 }});
-            $(':radio[value="{{ prefer }}"]').attr('checked', 'checked');
         });
+
     </script>
 
     <div class="mdl-tabs mdl-js-tabs">
         <div class="mdl-tabs__tab-bar">
-            <a id="label-header" class="mdl-tabs__tab is-active">Results near <span id="place_name">{{ loc }}</span> within {{ radius / 1600 }} miles:</a>
+            <a id="label-header" class="mdl-tabs__tab is-active">Results near <span id="place_name">{{ loc }}</span>
+                within {{ radius / 1600 }} miles:</a>
         </div>
 
         <div class="mdl-tabs__panel is-active" id="starks-panel">
